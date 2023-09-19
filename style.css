@@ -1,6 +1,37 @@
-.board{
-    width: 500px;
-    height: 500px;
-    display: grid;
+.board {
+  width: 500px;
+  height: 500px;
+  display: grid;
+  border-radius: 20px;
+  background: #e0e0e0;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  overflow: hidden;
+
+}
+.pixel {
+  border: 1px solid rgb(233, 232, 232);
+}
+.content {
+  font-family: sans-serif;
+  height: 90vh;
+  width: 90vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.buttons {
+  
+  display: flex;
+  gap: 20px;
+}
+.pen{
+  font-size: 1.5rem;
+}
+button{
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
 
 }

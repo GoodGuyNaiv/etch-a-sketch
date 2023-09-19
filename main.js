@@ -1,5 +1,7 @@
 let color = "black";
-let click = false
+let click = false;
+let penStatus = document.querySelector(".pen")
+
 document.querySelector(".size-prompt").addEventListener("click", () => {
   let sizeValue = prompt("Enter Board size: ");
   if (sizeValue < 2 || sizeValue > 100) {
@@ -22,7 +24,7 @@ function createBoard(size) {
 
   for (let i = 0; i < size * size; i++) {
     let pixel = document.createElement("div");
-    pixel.style.backgroundColor = "blue";
+    
     pixel.classList.add("pixel");
     pixel.addEventListener("mouseover", colorPixel);
     board.appendChild(pixel);
@@ -44,7 +46,11 @@ function resetBoard() {
   pixels.forEach((pixel) => pixel.remove());
 }
 function changeClick(){
+
   click = !click
   // if(click == false) click = true;
   // else click = false;
+
+  if (click) penStatus.textContent = "Pen ✏️: ENABLED (Click board to disable!)"
+  else penStatus.textContent= "Pen ✏️: Disabled (Click board to enable!)"
 }
