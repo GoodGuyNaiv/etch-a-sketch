@@ -1,3 +1,5 @@
+let color = "black";
+let click = false
 document.querySelector(".size-prompt").addEventListener("click", () => {
   let sizeValue = prompt("Enter Board size: ");
   if (sizeValue < 2 || sizeValue > 100) {
@@ -8,12 +10,11 @@ document.querySelector(".size-prompt").addEventListener("click", () => {
   createBoard(sizeValue);
 });
 
-
 function createBoard(size) {
   console.log("ded");
   let board = document.querySelector(".board");
   let pixels = document.querySelectorAll(".pixel");
-
+  board.addEventListener("click", changeClick )
   pixels.forEach((pixel) => pixel.remove());
 
   board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -23,7 +24,27 @@ function createBoard(size) {
     let pixel = document.createElement("div");
     pixel.style.backgroundColor = "blue";
     pixel.classList.add("pixel");
-    pixel.addEventListener("mouseover",() => {pixel.style.backgroundColor = "black"} )
+    pixel.addEventListener("mouseover", colorPixel);
     board.appendChild(pixel);
   }
+}
+function colorPixel() {
+  if(click){
+    if (color == "random") this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    else this.style.backgroundColor = color;
+  }
+}
+
+function changeColor(colorInput) {
+  color = colorInput;
+}
+
+function resetBoard() {
+  let pixels = document.querySelectorAll(".pixel");
+  pixels.forEach((pixel) => pixel.remove());
+}
+function changeClick(){
+  click = !click
+  // if(click == false) click = true;
+  // else click = false;
 }
